@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+    mysqldb:
+        build:
+            context: ./
+            dockerfile: Dockerfile_mysql
+        platform: linux/x86_64
+        container_name: auth_lab02-mysql
+        ports:
+            - 3306:3306
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            timeout: 5s
+            retries: 10
+    app:
+        depends_on:
+            mysqldb:
+                condition: service_healthy
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        working_dir: /usr/src/auth_Lab02
+        container_name: auth_Lab02-api
+        env_file: ./environment/dev.env
+        ports:
+            - 8080:8080
+        stdin_open: true
+        tty: true
+        volumes:
+            - ./controller:/usr/src/auth_Lab02/controller
+            - ./routes:/usr/src/auth_Lab02/routes

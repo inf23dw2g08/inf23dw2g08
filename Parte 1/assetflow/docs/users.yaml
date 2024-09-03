@@ -1,0 +1,42 @@
+paths:
+  /users:
+    get:
+      tags:
+        - User
+      summary: Access to unprotected resource
+      security: [] # No security
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User List
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid Users
+        '500':
+          description: Server error
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        username:
+          type: string
+          example: theUser
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+
+

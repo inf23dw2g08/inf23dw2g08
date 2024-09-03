@@ -1,6 +1,6 @@
 ## ASSET FLOW
 
-Este repositorio serve para alojar o projeto para avaliação final (Época Recurso) da cadeira de Tecnologias Internet da UMAIA.
+Este repositorio serve para alojar o projeto para avaliação final (Época Especial) da cadeira de Desenvolvimento web ll da UMAIA.
 
 ## DESCRIÇÃO
 
